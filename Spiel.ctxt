@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Spiel
+comment1.params=anzahlSpielerInConstructor\ anzahlStartkartenInConstructor
+comment1.target=Spiel(int,\ int)
+comment2.params=
+comment2.target=void\ kartenAufteilen()
+comment3.params=set
+comment3.target=void\ kartensetMischen(Karte[])
+numComments=4

@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.target=Spieler
+comment1.params=anzahlKartenInConstructor\ kartenInConstructor
+comment1.target=Spieler(int,\ Karte[])
+numComments=2
