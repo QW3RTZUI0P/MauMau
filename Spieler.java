@@ -14,7 +14,9 @@ public class Spieler
         karten = kartenInConstructor;
     }
     
-    public void karteAusspielen() {
+    public void karteAusspielenOderZiehen() {
+        
+        // hier Logik für freiwillig Karte ziehen
     
         Karte gewählteKarte = karteWählen();
         if (spiel.kartePrüfen(gewählteKarte)) {
@@ -23,7 +25,7 @@ public class Spieler
         
         } else {
         
-            // neue Karte wählen
+            // neue Karte wählen (Funktion nocheinmal aufrufen
         
         }
         

@@ -73,7 +73,7 @@ public class Spiel
     
     public void runde() {
         for (int i = 0; i < anzahlSpieler; i++) {
-        spieler[i].karteAusspielen();
+        spieler[i].karteAusspielenOderZiehen();
     }
     
     }
