@@ -1,5 +1,9 @@
 #BlueJ class context
 comment0.target=Spieler
-comment1.params=anzahlKartenInConstructor\ kartenInConstructor
-comment1.target=Spieler(int,\ Karte[])
-numComments=2
+comment1.params=nummerInConstructor\ spielInConstructor\ anzahlKartenInConstructor\ kartenInConstructor
+comment1.target=Spieler(int,\ Spiel,\ int,\ Karte[])
+comment2.params=
+comment2.target=void\ karteAusspielen()
+comment3.params=
+comment3.target=Karte\ karteW\u00E4hlen()
+numComments=4
