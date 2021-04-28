@@ -20,7 +20,8 @@ public class Karte
     }
     
     public Karte[] kartensetGeben() {
-    Karte[] set = {};
+    Karte[] set;
+    set = new Karte[52];
     int zähler = 0;
     for (int i = 0; i < 4; i++) {
     

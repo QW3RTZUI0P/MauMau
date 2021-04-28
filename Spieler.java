@@ -4,7 +4,7 @@ public class Spieler
     // aktuelles Spiel
     public Spiel spiel;
     public int anzahlKarten;
-    public Karte[] karten = {};
+    public Karte[] karten;
     
     public Spieler(int nummerInConstructor, Spiel spielInConstructor, int anzahlKartenInConstructor, Karte[] kartenInConstructor)
     {
@@ -15,9 +15,8 @@ public class Spieler
     }
     
     public void karteAusspielenOderZiehen() {
-        
+        System.out.print("hallo");
         // hier Logik für freiwillig Karte ziehen
-    
         Karte gewählteKarte = karteWählen();
         if (spiel.kartePrüfen(gewählteKarte)) {
         

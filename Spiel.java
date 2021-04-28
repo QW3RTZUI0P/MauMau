@@ -2,6 +2,7 @@ import java.util.*;
 
 public class Spiel
 {
+    private GUI gui;
     // am besten höchstens 6 Spieler
     private int anzahlSpieler;
     private int anzahlKartenInsgesamt = 52;
@@ -17,21 +18,25 @@ public class Spiel
    
     public Spiel(int anzahlSpielerInConstructor, int anzahlStartkartenInConstructor)
     {
+        
         anzahlSpieler = anzahlSpielerInConstructor;
         anzahlStartkarten = anzahlStartkartenInConstructor;
         startspieler = 0;
-        kartenAufteilen();
+        spieler = new Spieler[anzahlSpielerInConstructor];
+        kartenAufteilenUndSpielerErstellen();
+        gui = new GUI(this);
     }
     
-    public void kartenAufteilen() {
+    public void kartenAufteilenUndSpielerErstellen() {
         Karte[] alleKarten = new Karte(0, 0).kartensetGeben();
-        kartensetMischen(alleKarten);
+        // kartensetMischen(alleKarten);
         int zähler = alleKarten.length - 1;
         for (int i = 0; i < anzahlSpieler; i ++) {
-            Karte[] kartenDesSpielers = {};
+            Karte[] kartenDesSpielers;
+            kartenDesSpielers = new Karte[anzahlStartkarten];
             for (int j = 0; j < anzahlStartkarten; j++) {
                 kartenDesSpielers[j] = new Karte(alleKarten[zähler].farbe, alleKarten[zähler].nummer);
-                alleKarten[zähler] = null;
+                alleKarten[zähler] = new Karte(0,0);
                 zähler = zähler - 1;
             }
             spieler[i] = new Spieler(i, this, anzahlStartkarten, kartenDesSpielers);
@@ -69,6 +74,10 @@ public class Spiel
         
         return false;
     
+    }
+    
+    public void spielStarten() {
+        runde();
     }
     
     public void runde() {
