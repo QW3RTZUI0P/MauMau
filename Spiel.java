@@ -26,6 +26,10 @@ public class Spiel
         kartenAufteilenUndSpielerErstellen();
         gui = new GUI(this);
     }
+
+    public static void main() {
+        System.out.println("snons");
+    }
     
     public void kartenAufteilenUndSpielerErstellen() {
         Karte[] alleKarten = new Karte(0, 0).kartensetGeben();
