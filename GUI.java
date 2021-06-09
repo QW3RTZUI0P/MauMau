@@ -2,7 +2,9 @@
 // Tutorial: https://examples.javacodegeeks.com/desktop-java/swing/java-swing-tutorial-beginners/
 import javax.swing.*;
 import java.awt.GridLayout;
+import java.awt.event.*;
 import java.awt.Insets;
+import java.awt.*;
 import javax.swing.border.EmptyBorder;
 // GUI: Graphical User Interface
 public class GUI
@@ -11,6 +13,9 @@ public class GUI
     // die Bilder sind folgerndermaßen benannt: [FARBE]_[NUMMER] für die Kreuz 2 also 0_2
    
     private Spiel spiel;
+    private JFrame frame;
+    private JPanel panel;
+    private JFrame spielFrame;
     
     public GUI(Spiel spielInConstructor)
     {
@@ -18,10 +23,10 @@ public class GUI
        main(); 
     }
     
-    public static void main() {
-        JFrame frame = new JFrame("Hauptmenü");
+    public void main() {
+        frame = new JFrame("Hauptmenü");
         // ImagePanel panel = new ImagePanel("assets/0_2.png");
-        JPanel panel = new JPanel();
+        panel = new JPanel();
         JLabel label = new JLabel("Herzlich willkommen! Bitte wählen Sie keine Option!", JLabel.CENTER);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(350, 250);
@@ -53,5 +58,42 @@ public class GUI
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         
+        // den Buttons Funktionen zuweisen
+        jb1.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                spielFrame = new JFrame("Spiel");
+                spielFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                spielFrame.setSize(350, 250);
+                Container pane = spielFrame.getContentPane();
+                pane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+                pane.setLayout(new GridBagLayout());
+                GridBagConstraints c = new GridBagConstraints();
+                c.fill = GridBagConstraints.HORIZONTAL;
+                spielFrame.setVisible(true);
+                zeigeKartenVomErstenSpieler(pane, c);
+            }
+        });
+        jb3.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                frame.setVisible(false);
+            }
+        });
+        
+    }
+    private void zeigeKartenVomErstenSpieler(Container pane, GridBagConstraints c) {
+        Spieler ersterSpieler = spiel.spieler[0];
+        for (int i = 0; i < ersterSpieler.karten.length; i++) {
+            Karte karte = ersterSpieler.karten[i];
+            String pfad = "assets/" + Integer.toString(karte.farbe) + "_" + Integer.toString(karte.nummer) + ".png";
+            ImagePanel panel = new ImagePanel(pfad);
+            BoxLayout boxlayout = new BoxLayout(panel, BoxLayout.Y_AXIS);
+            //panel.setLayout(boxlayout);
+            panel.setBorder(new EmptyBorder(new Insets(45, 70, 45, 70)));
+            c.fill = GridBagConstraints.HORIZONTAL;
+            c.gridx = i * 10;
+            c.gridy = i * 10;
+           spielFrame.add(panel, c);
+            
+        }
     }
 }

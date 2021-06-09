@@ -7,7 +7,7 @@ public class Spiel
     private int anzahlSpieler;
     private int anzahlKartenInsgesamt = 52;
     private int anzahlStartkarten;
-    private Spieler[] spieler;
+    public Spieler[] spieler;
     private Karte[] nachziehstapel;
     // Variable Werte, die sich während des Spiels ändern
     // Nummer des aktuellen Startspielers
@@ -25,10 +25,6 @@ public class Spiel
         spieler = new Spieler[anzahlSpielerInConstructor];
         kartenAufteilenUndSpielerErstellen();
         gui = new GUI(this);
-    }
-
-    public static void main() {
-        System.out.println("snons");
     }
     
     public void kartenAufteilenUndSpielerErstellen() {
